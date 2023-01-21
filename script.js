@@ -19,25 +19,27 @@ async function getApi(url) {
       //console.log(`${attractions[key].name} : ${attractions[key].queue['STANDBY'].waitTime}`);
 
       ridesArray.push(attractions[key]);
+      ridesArray.sort((a, b) => {
+        return b.queue["STANDBY"].waitTime - a.queue["STANDBY"].waitTime;
+      });
     }
+  });
+    ridesArray.forEach((key) => {
+    const para = document.createElement("p");
+    const node = document.createTextNode(
+      `${key.name} : ${key.queue["STANDBY"].waitTime}`
+    );
+    const child = document.getElementById("ride");
+    para.append(node);
+    attractionEl.append(para, child);
   });
 }
 
 getApi(destinationsURL);
 
-ridesArray.sort((a, b) => {
-  return b.queue["STANDBY"].waitTime - a.queue["STANDBY"].waitTime;
-});
+// async function displayRides(array) {
 
-function displayRides(array) {
-  array.forEach((key) => {
-      const para = document.createElement("p") ;
-      const node = document.createTextNode(`${array[key].name} : ${array[key].queue['STANDBY'].waitTime}` )
-      const child = document.getElementById('ride');
-      para.append(node);
-      attractionEl.append(para, child);
-  });
-}
+// }
 
-displayRides(ridesArray);
+// displayRides(ridesArray);
 console.log(ridesArray);

@@ -25,13 +25,34 @@ async function getApi(url) {
     }
   });
     ridesArray.forEach((key) => {
+    let child;
     const para = document.createElement("p");
     const node = document.createTextNode(
       `${key.name} : ${key.queue["STANDBY"].waitTime}`
     );
-    const child = document.getElementById("ride");
-    para.append(node);
-    attractionEl.append(para, child);
+        if(key.parkId == "75ea578a-adc8-4116-a54d-dccb60765ef9"){
+            child = document.getElementById("Magic-Kingdom");
+            para.appendChild(node);
+            child.appendChild(para, child);
+        }
+        if(key.parkId == "47f90d2c-e191-4239-a466-5892ef59a88b"){
+            child = document.getElementById("Epcot");
+            para.appendChild(node);
+            child.appendChild(para, child);
+        } 
+        if(key.parkId == "1c84a229-8862-4648-9c71-378ddd2c7693"){
+            child = document.getElementById("Animal-Kingdom");
+            para.appendChild(node);
+            child.appendChild(para, child);
+        } 
+        if(key.parkId == "288747d1-8b4f-4a64-867e-ea7c9b27bad8"){
+            child = document.getElementById("Hollywood-Studios");
+            para.appendChild(node);
+            child.appendChild(para, child);
+        } 
+
+
+
   });
 }
 

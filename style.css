@@ -1,5 +1,27 @@
-p{
+:root{
+    font-size: 16px;
+}
+
+
+
+.container{
     display: flex;
     justify-content: flex-start;
-    width: 600px;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.flex-item{
+    width: 49vw;
+}
+
+h2{
+    font-family: 'Waltograph';
+    font-size: 3rem;
+}
+
+p{
+    font-family: 'Enchanted Land';
+    font-size: 2rem;
 }

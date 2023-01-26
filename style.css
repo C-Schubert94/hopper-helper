@@ -25,3 +25,9 @@ p{
     font-family: 'Enchanted Land';
     font-size: 2rem;
 }
+
+@media (max-width:975px) {
+    .flex-item{
+        width: 100vw;
+    }
+}

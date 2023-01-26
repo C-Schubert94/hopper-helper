@@ -2,20 +2,29 @@
 const liveDataURL =
   "https://api.themeparks.wiki/v1/entity/waltdisneyworldresort/live";
 
-//initializing empty array for the rides to be added to  
+//gets current date and time
+let currentDate = new Date();
+let cDay = currentDate.getDate();
+let cMonth = currentDate.getMonth() + 1;
+let cYear = currentDate.getFullYear();
+
+
+
+//initializing empty array for the rides to be added to
 let ridesArray = [];
+let ridesForecast = [];
 
 //declaring function to fetch api for live data
 async function getApi(url) {
   const response = await fetch(url);
   let data = await response.json();
 
-  //accesses the rides and attractions and accesses the live data 
+  //accesses the rides and attractions and accesses the live data
   //portion of Walt Disney World Resort
   let attractions = data.liveData;
 
-  //iterates through list of attractions and filters out any 
-  //shows, restaurants, and anything without a normal 
+  //iterates through list of attractions and filters out any
+  //shows, restaurants, and anything without a normal
   //standby queue
   Object.keys(attractions).forEach((key) => {
     if (attractions[key].queue === undefined) {
@@ -30,7 +39,6 @@ async function getApi(url) {
     } else if (attractions[key].queue["STANDBY"].waitTime === null) {
       return;
     } else {
-
       //adds attraction to array
       ridesArray.push(attractions[key]);
 
@@ -42,10 +50,9 @@ async function getApi(url) {
     }
   });
 
-  //iterates through list of attractions and displays each to 
+  //iterates through list of attractions and displays each to
   //the DOM while being sorted to their correct theme park
   ridesArray.forEach((key) => {
-
     //initializes dom element
     let child;
 
@@ -102,10 +109,26 @@ async function getApi(url) {
       child.appendChild(para, child);
     }
   });
+  Object.keys(ridesArray).forEach((key) => {
+    if(ridesArray[key].forecast === undefined){
+      return;
+    }
+    ridesArray[key]['forecast'].forEach((time) => {
+      let hour = new Date(time.time)
+          hour = hour.getHours();
+
+      if(hour === currentDate.getHours()){
+        ridesForecast.push({name:ridesArray[key].name, FWT:time.waitTime})
+      }
+      //console.log(hour)
+    })
+  })
+  console.log(ridesForecast)
+  console.log(ridesArray)
 }
 
 //calls api function where all the magic happens
 getApi(liveDataURL);
 
 //random console log just in case I need to see something
-console.log(ridesArray);
+

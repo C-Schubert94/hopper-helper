@@ -119,6 +119,9 @@ async function getApi(url) {
       child.appendChild(para, child);
     }
   });
+
+  //Iterates through ridesArray and compares the current hour to
+  //The list of forecasts,finds the correct one, and uses that wait time
   Object.keys(ridesArray).forEach((key) => {
     if (ridesArray[key].forecast === undefined) {
       return;
@@ -130,7 +133,6 @@ async function getApi(url) {
       if (hour === currentDate.getHours()) {
         ridesForecast.push({ name: ridesArray[key].name, FWT: time.waitTime });
       }
-      //console.log(hour)
     });
   });
 
@@ -142,6 +144,8 @@ async function getApi(url) {
     return difference;
   }
 
+  //Iterates through array, identifies which park the ride goes to,
+  //Runs waitPercentDifference function, and updates the result for that park
   for (let i = 0; i < ridesForecast.length; i++) {
     if (ridesArray[i].parkId === "75ea578a-adc8-4116-a54d-dccb60765ef9") {
       MKResult =
@@ -177,23 +181,88 @@ async function getApi(url) {
     }
   }
 
-  let parksArray = [MKResult,epcotResult,AKResult,HSResult,]
-  parksArray.sort((a,b) => {
-    return a-b;
-  })
+  //Initializes array with results and sorts them in ascending order
+  let parksArray = [
+    { name: 'MagicKingdom', result: MKResult },
+    { name: 'Epcot', result: epcotResult },
+    { name: 'AnimalKingdom', result: AKResult },
+    { name: 'HollywoodStudios', result: HSResult },
+  ];
+  parksArray.sort((a, b) => {
+    return a.result - b.result;
+  });
+
+  for(let i=0; i < parksArray.length; i++){
+    let title;
+    //If the index is 0
+    if (parksArray[i].name == "MagicKingdom" && parksArray.findIndex(x => x.name == 'MagicKingdom') === 0){
+      title = document.getElementById('MK-title') 
+      title.append('🥇') 
+      console.log('magic kingdom is 1st')
+    }
+    if (parksArray[i].name == "Epcot" && parksArray.findIndex(x => x.name == 'Epcot') === 0){
+      title = document.getElementById('epcot-title')
+      title.append('🥇')
+      console.log('epcot is 1st')
+    }
+    if (parksArray[i].name == "AnimalKingdom" && parksArray.findIndex(x => x.name == 'AnimalKingdom') === 0){
+      title = document.getElementById('AK-title')
+      title.append('🥇')
+      console.log('animal kingdom is 1st')
+    }
+    if (parksArray[i].name == "HollywoodStudios" && parksArray.findIndex(x => x.name == 'HollywoodStudios') === 0){
+      title = document.getElementById('HS-title')
+      title.append('🥇')
+      console.log('hollywood studios is 1st')
+    }
+
+    //If the index is 1
+    if (parksArray[i].name == "MagicKingdom" && parksArray.findIndex(x => x.name == 'MagicKingdom') === 1){
+      title = document.getElementById('MK-title')
+      title.append('🥈') 
+      console.log('magic kingdom is 2nd') 
+    }
+    if (parksArray[i].name == "Epcot" && parksArray.findIndex(x => x.name == 'Epcot') === 1){
+      title = document.getElementById('epcot-title')
+      title.append('🥈')
+      console.log('epcot is 2nd')
+    }
+    if (parksArray[i].name == "AnimalKingdom" && parksArray.findIndex(x => x.name == 'AnimalKingdom') === 1){
+      title = document.getElementById('AK-title')
+      title.append('🥈')
+      console.log('animal kingdom is 2nd')
+    }
+    if (parksArray[i].name == "HollywoodStudios" && parksArray.findIndex(x => x.name == 'HollywoodStudios') === 1){
+      title = document.getElementById('HS-title')
+      title.append('🥈')
+      console.log('hollywood studios is 2nd')
+    }
+    //If the index is 2
+    if (parksArray[i].name == "MagicKingdom" && parksArray.findIndex(x => x.name == 'MagicKingdom') === 2){
+      title = document.getElementById('MK-title')
+      title.append('🥉')
+      console.log('magic kingdom is 3rd')  
+    }
+    if (parksArray[i].name == "Epcot" && parksArray.findIndex(x => x.name == 'Epcot') === 2){
+      title = document.getElementById('epcot-title')
+      title.append('🥉')
+      console.log('epcot is 3rd')
+    }
+    if (parksArray[i].name == "AnimalKingdom" && parksArray.findIndex(x => x.name == 'AnimalKingdom') === 2){
+      title = document.getElementById('AK-title')
+      title.append('🥉')
+      console.log('animal kingdom is 3rd')
+    }
+    if (parksArray[i].name == "HollywoodStudios" && parksArray.findIndex(x => x.name == 'HollywoodStudios') === 2){
+      title = document.getElementById('HS-title')
+      title.append('🥉')
+      console.log('hollywood studios is 3rd')
+    }
+  }
+
 
   console.log(parksArray);
-  console.log(MKResult);
-  console.log(epcotResult);
-  console.log(AKResult);
-  console.log(HSResult);
-  console.log(ridesForecast);
-  console.log(ridesArrayClone);
-  console.log(ridesArray);
-
-  //calls api function where all the magic happens
-  
-  //random console log just in case I need to see something
 }
 
+//calls api function where all the magic happens
 getApi(liveDataURL);

@@ -2,7 +2,23 @@
     font-size: 16px;
 }
 
+@font-face {
+    font-family: 'enchanted-land';
+    src: url('./fonts/enchanted_land-webfont.woff2') format('woff2'),
+         url('./fonts/enchanted_land-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 
+}
+
+@font-face {
+    font-family: 'waltograph';
+    src: url('./fonts/waltograph42-webfont.woff2') format('woff2'),
+         url('./fonts/waltograph42-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 .container{
     display: flex;
@@ -17,12 +33,12 @@
 }
 
 h2{
-    font-family: 'Waltograph';
+    font-family: 'waltograph';
     font-size: 3rem;
 }
 
 p{
-    font-family: 'Enchanted Land';
+    font-family: 'enchanted-land';
     font-size: 2rem;
 }
 

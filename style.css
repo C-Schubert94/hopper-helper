@@ -5,7 +5,8 @@
 @font-face {
     font-family: 'enchanted-land';
     src: url('./fonts/enchanted_land-webfont.woff2') format('woff2'),
-         url('./fonts/enchanted_land-webfont.woff') format('woff');
+         url('./fonts/enchanted_land-webfont.woff') format('woff'),
+         url('./fonts/Enchanted_Land.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 
@@ -14,7 +15,8 @@
 @font-face {
     font-family: 'waltograph';
     src: url('./fonts/waltograph42-webfont.woff2') format('woff2'),
-         url('./fonts/waltograph42-webfont.woff') format('woff');
+         url('./fonts/waltograph42-webfont.woff') format('woff'),
+         url('./fonts/waltograph42.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 

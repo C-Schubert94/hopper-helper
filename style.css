@@ -32,6 +32,47 @@
 
 }
 
+
+.button{
+    background: none;
+    border: none;
+    margin-left: 1rem;
+    
+}
+
+.button-img{
+    transition: transform 0.3s ease
+}
+
+.button-img.rotate{
+    transform: rotate(90deg);
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+img{
+    width: 1.5rem;
+}
+
+.mk-dropdown, .epcot-dropdown, .ak-dropdown, .hs-dropdown{
+    height: 0;
+    overflow-y: scroll;
+    transition: height 300ms ease-in-out;
+}
+
+.mk-dropdown::-webkit-scrollbar-button, 
+.epcot-dropdown::-webkit-scrollbar-button,
+.ak-dropdown::-webkit-scrollbar-button, 
+.hs-dropdown::-webkit-scrollbar-button{
+    display: none;
+}
+
+.active{
+    height: 400px;
+}
+
 .flex-item{
     width: 49vw;
 }
@@ -39,6 +80,7 @@
 h2{
     font-family: 'waltograph';
     font-size: 3rem;
+    display: inline;
 }
 
 p{

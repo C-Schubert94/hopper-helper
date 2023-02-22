@@ -102,7 +102,7 @@ async function getApi(url) {
 
     //checks if attraction is in magic kingdom
     if (ridesArray[i].parkId == "75ea578a-adc8-4116-a54d-dccb60765ef9") {
-      child = document.getElementById("Magic-Kingdom");
+      child = document.getElementById("MK-dropdown");
 
       //appends the attraction and wait time into p tag
       para.appendChild(node);
@@ -113,7 +113,7 @@ async function getApi(url) {
 
     //checks if attraction is in epcot
     if (ridesArray[i].parkId == "47f90d2c-e191-4239-a466-5892ef59a88b") {
-      child = document.getElementById("Epcot");
+      child = document.getElementById("Epcot-dropdown");
 
       //appends the attraction and wait time into p tag
       para.appendChild(node);
@@ -124,7 +124,7 @@ async function getApi(url) {
 
     //checks if attraction is in animal kingdom
     if (ridesArray[i].parkId == "1c84a229-8862-4648-9c71-378ddd2c7693") {
-      child = document.getElementById("Animal-Kingdom");
+      child = document.getElementById("AK-dropdown");
 
       //appends the attraction and wait time into p tag
       para.appendChild(node);
@@ -135,7 +135,7 @@ async function getApi(url) {
 
     //checks if attraction is in hollywood studios
     if (ridesArray[i].parkId == "288747d1-8b4f-4a64-867e-ea7c9b27bad8") {
-      child = document.getElementById("Hollywood-Studios");
+      child = document.getElementById("HS-dropdown");
 
       //appends the attraction and wait time into p tag
       para.appendChild(node);
@@ -303,3 +303,35 @@ async function getApi(url) {
 
 //calls api function where all the magic happens
 getApi(liveDataURL);
+
+for(let i=0; i<4; i++) {
+  const dropButton = document.getElementsByClassName('button')[i];
+  const buttonImage = document.getElementsByClassName('button-img')[i];
+  
+  dropButton.addEventListener('click', () => {
+    buttonImage.classList.toggle('rotate');
+  });
+}
+
+const magicKingdom = document.getElementById('MK-dropdown');
+const epcot = document.getElementById('Epcot-dropdown');
+const animalKingdom = document.getElementById('AK-dropdown');
+const hollywoodStudios = document.getElementById('HS-dropdown');
+
+const dropButton1 = document.getElementsByClassName('button')[0];
+const dropButton2 = document.getElementsByClassName('button')[1];
+const dropButton3 = document.getElementsByClassName('button')[2];
+const dropButton4 = document.getElementsByClassName('button')[3];
+
+dropButton1.addEventListener('click', () => {
+  magicKingdom.classList.toggle('active');
+});
+dropButton2.addEventListener('click', () => {
+  epcot.classList.toggle('active');
+});
+dropButton3.addEventListener('click', () => {
+  animalKingdom.classList.toggle('active');
+});
+dropButton4.addEventListener('click', () => {
+  hollywoodStudios.classList.toggle('active');
+});

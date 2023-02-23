@@ -75,76 +75,6 @@ async function getApi(url) {
     return difference;
   }
 
-  //iterates through list of attractions and displays each to
-  //the DOM while being sorted to their correct theme park
-  for (let i = 0; i < ridesArray.length; i++) {
-    //initializes dom element
-    let child;
-
-    //creates the p tag for the data to enter into
-    const para = document.createElement("p");
-    para.classList.add("ride");
-
-    if (
-      waitPercentDifference(
-        ridesArray[i].queue["STANDBY"].waitTime,
-        ridesForecast[i].FWT
-      ) < -0.3
-    ) {
-      para.classList.toggle("shimmer", true);
-    }
-
-    //generates the name of the attraction along with the
-    //current wait time for it
-    const node = document.createTextNode(
-      `${ridesArray[i].name} : ${ridesArray[i].queue["STANDBY"].waitTime} minutes`
-    );
-
-    //checks if attraction is in magic kingdom
-    if (ridesArray[i].parkId == "75ea578a-adc8-4116-a54d-dccb60765ef9") {
-      child = document.getElementById("MK-dropdown");
-
-      //appends the attraction and wait time into p tag
-      para.appendChild(node);
-
-      //appends the p tag into the correct div
-      child.appendChild(para, child);
-    }
-
-    //checks if attraction is in epcot
-    if (ridesArray[i].parkId == "47f90d2c-e191-4239-a466-5892ef59a88b") {
-      child = document.getElementById("Epcot-dropdown");
-
-      //appends the attraction and wait time into p tag
-      para.appendChild(node);
-
-      //appends the p tag into the correct div
-      child.appendChild(para, child);
-    }
-
-    //checks if attraction is in animal kingdom
-    if (ridesArray[i].parkId == "1c84a229-8862-4648-9c71-378ddd2c7693") {
-      child = document.getElementById("AK-dropdown");
-
-      //appends the attraction and wait time into p tag
-      para.appendChild(node);
-
-      //appends the p tag into the correct div
-      child.appendChild(para, child);
-    }
-
-    //checks if attraction is in hollywood studios
-    if (ridesArray[i].parkId == "288747d1-8b4f-4a64-867e-ea7c9b27bad8") {
-      child = document.getElementById("HS-dropdown");
-
-      //appends the attraction and wait time into p tag
-      para.appendChild(node);
-
-      //appends the p tag into the correct div
-      child.appendChild(para, child);
-    }
-  }
-
   //Iterates through array, identifies which park the ride goes to,
   //Runs waitPercentDifference function, and updates the result for that park
   for (let i = 0; i < ridesForecast.length; i++) {
@@ -184,10 +114,10 @@ async function getApi(url) {
 
   //Initializes array with results and sorts them in ascending order
   let parksArray = [
-    { name: "MagicKingdom", result: MKResult },
+    { name: "Magic-Kingdom", result: MKResult },
     { name: "Epcot", result: epcotResult },
-    { name: "AnimalKingdom", result: AKResult },
-    { name: "HollywoodStudios", result: HSResult },
+    { name: "Animal-Kingdom", result: AKResult },
+    { name: "Hollywood-Studios", result: HSResult },
   ];
   parksArray.sort((a, b) => {
     return a.result - b.result;
@@ -197,8 +127,8 @@ async function getApi(url) {
     let title;
     //If the index is 0
     if (
-      parksArray[i].name == "MagicKingdom" &&
-      parksArray.findIndex((x) => x.name == "MagicKingdom") === 0
+      parksArray[i].name == "Magic-Kingdom" &&
+      parksArray.findIndex((x) => x.name == "Magic-Kingdom") === 0
     ) {
       title = document.getElementById("MK-title");
       title.append("🥇");
@@ -213,16 +143,16 @@ async function getApi(url) {
       console.log("epcot is 1st");
     }
     if (
-      parksArray[i].name == "AnimalKingdom" &&
-      parksArray.findIndex((x) => x.name == "AnimalKingdom") === 0
+      parksArray[i].name == "Animal-Kingdom" &&
+      parksArray.findIndex((x) => x.name == "Animal-Kingdom") === 0
     ) {
       title = document.getElementById("AK-title");
       title.append("🥇");
       console.log("animal kingdom is 1st");
     }
     if (
-      parksArray[i].name == "HollywoodStudios" &&
-      parksArray.findIndex((x) => x.name == "HollywoodStudios") === 0
+      parksArray[i].name == "Hollywood-Studios" &&
+      parksArray.findIndex((x) => x.name == "Hollywood-Studios") === 0
     ) {
       title = document.getElementById("HS-title");
       title.append("🥇");
@@ -231,8 +161,8 @@ async function getApi(url) {
 
     //If the index is 1
     if (
-      parksArray[i].name == "MagicKingdom" &&
-      parksArray.findIndex((x) => x.name == "MagicKingdom") === 1
+      parksArray[i].name == "Magic-Kingdom" &&
+      parksArray.findIndex((x) => x.name == "Magic-Kingdom") === 1
     ) {
       title = document.getElementById("MK-title");
       title.append("🥈");
@@ -247,16 +177,16 @@ async function getApi(url) {
       console.log("epcot is 2nd");
     }
     if (
-      parksArray[i].name == "AnimalKingdom" &&
-      parksArray.findIndex((x) => x.name == "AnimalKingdom") === 1
+      parksArray[i].name == "Animal-Kingdom" &&
+      parksArray.findIndex((x) => x.name == "Animal-Kingdom") === 1
     ) {
       title = document.getElementById("AK-title");
       title.append("🥈");
       console.log("animal kingdom is 2nd");
     }
     if (
-      parksArray[i].name == "HollywoodStudios" &&
-      parksArray.findIndex((x) => x.name == "HollywoodStudios") === 1
+      parksArray[i].name == "Hollywood-Studios" &&
+      parksArray.findIndex((x) => x.name == "Hollywood-Studios") === 1
     ) {
       title = document.getElementById("HS-title");
       title.append("🥈");
@@ -264,8 +194,8 @@ async function getApi(url) {
     }
     //If the index is 2
     if (
-      parksArray[i].name == "MagicKingdom" &&
-      parksArray.findIndex((x) => x.name == "MagicKingdom") === 2
+      parksArray[i].name == "Magic-Kingdom" &&
+      parksArray.findIndex((x) => x.name == "Magic-Kingdom") === 2
     ) {
       title = document.getElementById("MK-title");
       title.append("🥉");
@@ -280,58 +210,141 @@ async function getApi(url) {
       console.log("epcot is 3rd");
     }
     if (
-      parksArray[i].name == "AnimalKingdom" &&
-      parksArray.findIndex((x) => x.name == "AnimalKingdom") === 2
+      parksArray[i].name == "Animal-Kingdom" &&
+      parksArray.findIndex((x) => x.name == "Animal-Kingdom") === 2
     ) {
       title = document.getElementById("AK-title");
       title.append("🥉");
       console.log("animal kingdom is 3rd");
     }
     if (
-      parksArray[i].name == "HollywoodStudios" &&
-      parksArray.findIndex((x) => x.name == "HollywoodStudios") === 2
+      parksArray[i].name == "Hollywood-Studios" &&
+      parksArray.findIndex((x) => x.name == "Hollywood-Studios") === 2
     ) {
       title = document.getElementById("HS-title");
       title.append("🥉");
       console.log("hollywood studios is 3rd");
     }
   }
-  console.log(ridesArray);
-  console.log(ridesForecast);
+
+  //iterates through list of attractions and displays each to
+  //the DOM while being sorted to their correct theme park
+  for (let i = 0; i < ridesArray.length; i++) {
+    //initializes dom element
+    let child;
+
+    //creates the p tag for the data to enter into
+    const para = document.createElement("p");
+    para.classList.add("ride");
+
+    if (
+      waitPercentDifference(
+        ridesArray[i].queue["STANDBY"].waitTime,
+        ridesForecast[i].FWT
+      ) < -0.3
+    ) {
+      para.classList.toggle("shimmer", true);
+    }
+
+    //generates the name of the attraction along with the
+    //current wait time for it
+    const node = document.createTextNode(
+      `${ridesArray[i].name} : ${ridesArray[i].queue["STANDBY"].waitTime} minutes`
+    );
+
+    //checks if attraction is in magic kingdom
+    if (ridesArray[i].parkId == "75ea578a-adc8-4116-a54d-dccb60765ef9") {
+      child = document.getElementById("MK-dropdown");
+
+      //appends the attraction and wait time into p tag
+      para.appendChild(node);
+
+      //appends the p tag into the correct div
+      child.appendChild(para);
+    }
+
+    //checks if attraction is in epcot
+    if (ridesArray[i].parkId == "47f90d2c-e191-4239-a466-5892ef59a88b") {
+      child = document.getElementById("Epcot-dropdown");
+
+      //appends the attraction and wait time into p tag
+      para.appendChild(node);
+
+      //appends the p tag into the correct div
+      child.appendChild(para);
+    }
+
+    //checks if attraction is in animal kingdom
+    if (ridesArray[i].parkId == "1c84a229-8862-4648-9c71-378ddd2c7693") {
+      child = document.getElementById("AK-dropdown");
+
+      //appends the attraction and wait time into p tag
+      para.appendChild(node);
+
+      //appends the p tag into the correct div
+      child.appendChild(para);
+    }
+
+    //checks if attraction is in hollywood studios
+    if (ridesArray[i].parkId == "288747d1-8b4f-4a64-867e-ea7c9b27bad8") {
+      child = document.getElementById("HS-dropdown");
+
+      //appends the attraction and wait time into p tag
+      para.appendChild(node);
+
+      //appends the p tag into the correct div
+      child.appendChild(para);
+    }
+  }
+
+  // Get the parent element that contains all the park divs
+  const parent = document.getElementById("container");
+
+  // Loop through the parksArray and move the corresponding div to the correct position
+  for (let i = 0; i < parksArray.length; i++) {
+    const park = parksArray[i];
+  
+    // Get the corresponding div based on the name of the park
+    const div = document.getElementById(`${park.name}`);
+  
+    // Move the div to the correct position based on the order specified in the parksArray
+    parent.appendChild(div);
+  }
+console.log(parent);
   console.log(parksArray);
 }
 
 //calls api function where all the magic happens
 getApi(liveDataURL);
 
-for(let i=0; i<4; i++) {
-  const dropButton = document.getElementsByClassName('button')[i];
-  const buttonImage = document.getElementsByClassName('button-img')[i];
-  
-  dropButton.addEventListener('click', () => {
-    buttonImage.classList.toggle('rotate');
+for (let i = 0; i < 4; i++) {
+  const dropButton = document.getElementsByClassName("button")[i];
+  const buttonImage = document.getElementsByClassName("button-img")[i];
+
+  dropButton.addEventListener("click", () => {
+    buttonImage.classList.toggle("rotate");
   });
 }
 
-const magicKingdom = document.getElementById('MK-dropdown');
-const epcot = document.getElementById('Epcot-dropdown');
-const animalKingdom = document.getElementById('AK-dropdown');
-const hollywoodStudios = document.getElementById('HS-dropdown');
+const magicKingdom = document.getElementById("MK-dropdown");
+const epcot = document.getElementById("Epcot-dropdown");
+const animalKingdom = document.getElementById("AK-dropdown");
+const hollywoodStudios = document.getElementById("HS-dropdown");
 
-const dropButton1 = document.getElementsByClassName('button')[0];
-const dropButton2 = document.getElementsByClassName('button')[1];
-const dropButton3 = document.getElementsByClassName('button')[2];
-const dropButton4 = document.getElementsByClassName('button')[3];
+const dropButton1 = document.getElementsByClassName("button")[0];
+const dropButton2 = document.getElementsByClassName("button")[1];
+const dropButton3 = document.getElementsByClassName("button")[2];
+const dropButton4 = document.getElementsByClassName("button")[3];
 
-dropButton1.addEventListener('click', () => {
-  magicKingdom.classList.toggle('active');
+dropButton1.addEventListener("click", () => {
+  magicKingdom.classList.toggle("active");
 });
-dropButton2.addEventListener('click', () => {
-  epcot.classList.toggle('active');
+dropButton2.addEventListener("click", () => {
+  epcot.classList.toggle("active");
 });
-dropButton3.addEventListener('click', () => {
-  animalKingdom.classList.toggle('active');
+dropButton3.addEventListener("click", () => {
+  animalKingdom.classList.toggle("active");
 });
-dropButton4.addEventListener('click', () => {
-  hollywoodStudios.classList.toggle('active');
+dropButton4.addEventListener("click", () => {
+  hollywoodStudios.classList.toggle("active");
 });

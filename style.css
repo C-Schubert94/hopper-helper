@@ -22,14 +22,17 @@
 
 }
 
+body{
+    background-image: linear-gradient(to bottom, #184fa2, #061b47);
+    background-repeat: no-repeat;
+    height: 100vh;
+}
 
-
-.container{
+#container{
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
-
 }
 
 
@@ -41,7 +44,8 @@
 }
 
 .button-img{
-    transition: transform 0.3s ease
+    transition: transform 0.3s ease;
+    filter: invert(100%) sepia(0%) saturate(2%) hue-rotate(349deg) brightness(109%) contrast(101%);
 }
 
 .button-img.rotate{
@@ -60,14 +64,17 @@ img{
     height: 0;
     overflow-y: scroll;
     transition: height 300ms ease-in-out;
+    /* background-color:rgba(255, 255, 255, 0.432); */
 }
 
-.mk-dropdown::-webkit-scrollbar-button, 
-.epcot-dropdown::-webkit-scrollbar-button,
-.ak-dropdown::-webkit-scrollbar-button, 
-.hs-dropdown::-webkit-scrollbar-button{
+.mk-dropdown::-webkit-scrollbar, 
+.epcot-dropdown::-webkit-scrollbar,
+.ak-dropdown::-webkit-scrollbar, 
+.hs-dropdown::-webkit-scrollbar{
     display: none;
 }
+
+
 
 .active{
     height: 400px;
@@ -79,13 +86,15 @@ img{
 
 h2{
     font-family: 'waltograph';
-    font-size: 3rem;
+    font-size: clamp(2rem, 3vw, 3rem);
+    color: #fff;
     display: inline;
 }
 
 p{
     font-family: 'enchanted-land';
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: #fff;
 }
 
 @media (max-width:975px) {
@@ -104,7 +113,7 @@ p{
     .shimmer {
         position: relative;
         overflow: hidden;
-        color: #FFD700;
+        color: #ffd900;
       }
       
       .shimmer::before {
@@ -113,10 +122,10 @@ p{
         position: absolute;
         top: 0;
         left: -200px;
-        width: 200px;
+        width: 20px;
         height: 100%;
-        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.534), transparent);
-        animation: shimmer 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        background: linear-gradient(to right, transparent, rgba(1, 4, 20, 0.3), transparent);
+        /* animation: shimmer 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; */
       }
       
 

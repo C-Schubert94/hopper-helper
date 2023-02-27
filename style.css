@@ -25,7 +25,8 @@
 body{
     background-image: linear-gradient(to bottom, #184fa2, #061b47);
     background-repeat: no-repeat;
-    height: 100vh;
+    background-size: cover;
+    min-height: 100vh;
 }
 
 #container{
@@ -33,6 +34,10 @@ body{
     justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+.flex-item{
+    width: 49vw;
 }
 
 
@@ -44,6 +49,7 @@ body{
 }
 
 .button-img{
+    width: 1.5rem;
     transition: transform 0.3s ease;
     filter: invert(100%) sepia(0%) saturate(2%) hue-rotate(349deg) brightness(109%) contrast(101%);
 }
@@ -56,8 +62,16 @@ body{
     cursor: pointer;
 }
 
-img{
-    width: 1.5rem;
+.judy-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+.judy{
+    width: 8rem;
 }
 
 .mk-dropdown, .epcot-dropdown, .ak-dropdown, .hs-dropdown{
@@ -80,21 +94,33 @@ img{
     height: 400px;
 }
 
-.flex-item{
-    width: 49vw;
-}
-
-h2{
+h1, h2{
     font-family: 'waltograph';
     font-size: clamp(2rem, 3vw, 3rem);
     color: #fff;
     display: inline;
 }
 
+h1{
+    font-size: clamp(3rem, 5vw, 5rem);
+    margin: 0;
+}
+
 p{
     font-family: 'enchanted-land';
     font-size: clamp(1.5rem, 2.5vw, 2rem);
     color: #fff;
+}
+
+span{
+    color: #ffd900;
+}
+
+.app-description{
+    font-family: Avenier, Helvetica, Arial, sans-serif;
+    font-size: clamp(1rem, 2vw, 2rem);
+    width: 80vw;
+    text-align: center;
 }
 
 @media (max-width:975px) {
